@@ -1,5 +1,11 @@
 from functools import lru_cache
 from typing import Union
+from routers import todos
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+
 
 from fastapi import FastAPI, Depends
 from fastapi.responses import PlainTextResponse
