@@ -21,10 +21,10 @@ def create_todo(todo: schemas.ToDoRequest, db: Session = Depends(get_db)):
     todo = crud.create_todo(db, todo)
     return todo
 
-#@router.get("", response_model=List[schemas.ToDoResponse])
-#def get_todos(completed: bool = None, db: Session = Depends(get_db)):
-    #/todos = crud.read_todos(db, completed)
-   #// return todos
+@router.get("", response_model=List[schemas.ToDoResponse])
+def get_todos(completed: bool = None, db: Session = Depends(get_db)):
+    todos = crud.read_todos(db, completed)
+    return todos
 
 @router.get("/{id}")
 def get_todo_by_id(id: int, db: Session = Depends(get_db)):
@@ -47,10 +47,10 @@ def delete_todo(id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="to do not found")
     
     # routers/todos.py
-from fastapi import APIRouter
+#from fastapi import APIRouter
 
-router = APIRouter()
+#router = APIRouter()
 
-@router.get("/todos/")
-async def get_todos():
-    return [{"task": "Buy groceries"}, {"task": "Read a book"}]
+#@router.get("/todos/")
+#async def get_todos():
+    #return [{"task": "Buy groceries"}, {"task": "Read a book"}]
